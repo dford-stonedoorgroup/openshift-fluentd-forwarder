@@ -42,7 +42,7 @@ RUN /tmp/common-install.sh && \
     rm -f /tmp/common-*.sh
 
 #Install GEM fluentd
-gem install fluentd --no-ri --no-rdoc
+RUN gem install fluentd --no-ri --no-rdoc
 
 #Build Kafka plugin
 RUN fluent-gem install fluent-plugin-kafka
