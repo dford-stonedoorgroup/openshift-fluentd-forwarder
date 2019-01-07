@@ -1,5 +1,5 @@
 # start based on a centos image
-FROM rhel7
+FROM registry.access.redhat.com/rhel7
 
 ENV HOME=/opt/app-root/src \
   PATH=/opt/rh/rh-ruby22/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin${PATH:+:${PATH}} \
@@ -40,6 +40,9 @@ RUN chmod g+rx ${HOME}/fluentd-check.sh && \
 # execute files and remove when done
 RUN /tmp/common-install.sh && \
     rm -f /tmp/common-*.sh
+
+#Build Kafka plugin
+RUN fluent-gem install fluent-plugin-kafka
 
 # set working dir
 WORKDIR ${HOME}
